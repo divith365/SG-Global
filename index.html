@@ -71,44 +71,21 @@
   /* ============ PRELOADER ============ */
   #preloader{
     position:fixed; inset:0; z-index:9999;
-    background:var(--bg);
+    background:var(--paper);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     gap:22px;
     transition:opacity 0.9s var(--ease), visibility 0.9s var(--ease);
   }
   #preloader.hide{ opacity:0; visibility:hidden; pointer-events:none; }
-  .seal{ width:118px; height:118px; }
-  .seal circle{
-    fill:none;
-    stroke:var(--gold-soft);
-    stroke-width:1.4;
-  }
-  .seal .ring-outer{
-    stroke-dasharray:345;
-    stroke-dashoffset:345;
-    animation:draw 1.7s var(--ease) forwards 0.15s;
-  }
-  .seal .ring-inner{
-    stroke-dasharray:270;
-    stroke-dashoffset:270;
-    animation:draw 1.4s var(--ease) forwards 0.5s;
-    opacity:0.7;
-  }
-  .seal text{
-    font-family:'Fraunces', serif;
-    fill:var(--cream-text);
-    font-size:22px;
-    opacity:0;
-    animation:fadeUp 0.8s var(--ease) forwards 1.1s;
-  }
-  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  .seal-logo{ width:182px; height:auto; opacity:0; animation:fadeUp 0.8s var(--ease) forwards 0.2s, pulseLogo 2s ease-in-out infinite 1s; border-radius: 50%; }
   @keyframes fadeUp{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+  @keyframes pulseLogo{ 0%,100%{ transform:scale(1); filter:drop-shadow(0 4px 6px rgba(0,0,0,0.05)); } 50%{ transform:scale(1.05); filter:drop-shadow(0 15px 20px rgba(0,0,0,0.15)); } }
   .preload-label{
     font-family:'Special Elite', monospace;
     font-size:0.7rem;
     letter-spacing:0.22em;
     text-transform:uppercase;
-    color:var(--cream-dim);
+    color:var(--ink-soft);
     opacity:0;
     animation:fadeUp 0.8s var(--ease) forwards 1.3s;
   }
@@ -229,35 +206,97 @@
   header{
     position:fixed; top:0; left:0; right:0; z-index:700;
     padding:20px 0;
+    background:var(--paper);
     transition:background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s;
-    border-bottom:1px solid transparent;
+    border-bottom:1px solid rgba(0,0,0,0.04);
   }
   header.solid{
-    background:rgba(37,26,19,0.92);
+    background:rgba(241,230,206,0.96);
     backdrop-filter:blur(10px);
     padding:12px 0;
-    border-color:var(--line);
+    border-color:rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   }
   header .wrap{ display:flex; align-items:center; justify-content:space-between; }
-  .logo-mark{ display:flex; align-items:center; gap:12px; }
-  .logo-badge{
-    width:42px; height:42px; border-radius:50%;
-    border:1px solid var(--gold-soft);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif; font-size:0.95rem; color:var(--gold-soft);
+  .logo-mark{ display:flex; align-items:center; gap:12px; transition: transform 0.3s var(--ease), filter 0.3s var(--ease); }
+  .logo-mark:hover{ transform: scale(1.03) translateY(-2px); filter: drop-shadow(0 4px 15px rgba(214,165,68,0.25)); }
+  .header-logo{
+    width:70px; height:70px;
+    object-fit:cover;
     flex-shrink:0;
+    border-radius:50%;
   }
-  .logo-text{ line-height:1.15; }
-  .logo-text .name{ font-family:'Fraunces', serif; font-size:1.02rem; color:var(--cream-text); }
-  .logo-text .sub{ font-family:'Special Elite', monospace; font-size:0.6rem; letter-spacing:0.14em; color:var(--cream-dim); text-transform:uppercase; }
+  .brand-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .brand-text-block.header-brand {
+    margin-left: 12px;
+  }
+  .brand-main {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: #0c2b5e;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    letter-spacing: 0.5px;
+    animation: textGlow 2.5s ease-in-out infinite alternate;
+  }
+  @keyframes textGlow {
+    from {
+      text-shadow: 0 0 4px rgba(46, 136, 42, 0.4), 0 0 10px rgba(12, 43, 94, 0.2);
+    }
+    to {
+      text-shadow: 0 0 10px rgba(46, 136, 42, 0.8), 0 0 20px rgba(12, 43, 94, 0.5);
+    }
+  }
+  .brand-main .s { color: #2e882a; font-size: 1.15em; }
+  .brand-main .amp { color: #666; font-family: 'Inter', sans-serif; font-size: 0.85em; margin: 0 4px; }
+  .brand-main .g { color: #0c2b5e; font-size: 1.15em; }
+  
+  .brand-private {
+    font-family: 'Inter', sans-serif;
+    color: #2e882a;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 6px 0;
+  }
+  .brand-private::before, .brand-private::after {
+    content: ''; flex: 1; height: 1px; background: #2e882a; margin: 0 8px;
+  }
+  
+  .brand-tag {
+    font-family: 'Inter', sans-serif;
+    color: #0c2b5e;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .brand-tag::before, .brand-tag::after {
+    content: ''; flex: 1; height: 1px; background: #0c2b5e; margin: 0 8px;
+  }
+  
+  /* Scale for Header */
+  .header-brand .brand-main { font-size: 16px; }
+  .header-brand .brand-private { font-size: 8.5px; margin: 4px 0; letter-spacing: 3px; }
+  .header-brand .brand-tag { font-size: 8.5px; }
 
   nav.main-nav{ display:flex; align-items:center; gap:34px; }
   nav.main-nav a{
-    font-size:0.85rem; color:var(--cream-dim);
+    font-size:0.85rem; color:var(--ink-soft);
     position:relative; padding:4px 0;
     transition:color 0.3s;
   }
-  nav.main-nav a:hover, nav.main-nav a.active{ color:var(--cream-text); }
+  nav.main-nav a:hover, nav.main-nav a.active{ color:var(--ink); }
   nav.main-nav a::after{
     content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
     background:var(--gold); transition:width 0.35s var(--ease);
@@ -273,7 +312,7 @@
   .nav-cta::after{ display:none; }
   .nav-cta:hover{ background:var(--gold-soft); color:var(--ink) !important; }
 
-  #menu-toggle{ display:none; background:none; border:none; color:var(--cream-text); }
+  #menu-toggle{ display:none; background:none; border:none; color:var(--ink); }
   @media (max-width:860px){
     nav.main-nav{ display:none; }
     #menu-toggle{ display:block; }
@@ -293,19 +332,29 @@
     display:flex; align-items:center;
     position:relative;
     padding:140px 0 100px;
-    background:
-      radial-gradient(ellipse at 80% 0%, rgba(166,65,74,0.25), transparent 55%),
-      radial-gradient(ellipse at 10% 90%, rgba(214,165,68,0.14), transparent 50%),
-      var(--bg);
+    background:var(--bg);
     overflow:hidden;
   }
-  #home::before{
-    content:'';
-    position:absolute; inset:0;
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(239,228,205,0.025) 40px);
-    pointer-events:none;
+  .hero-slider { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+  .hero-slider::after { content: ''; position: absolute; inset: 0; background: rgba(28, 19, 12, 0.75); z-index: 1; }
+  .hero-slide {
+    position: absolute; inset: -5%; width: 110%; height: 110%;
+    background-size: cover; background-position: center;
+    opacity: 0; animation: slidePan 25s infinite linear; z-index: 0;
   }
-  .hero-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center; }
+  .hero-slide:nth-child(1) { animation-delay: 0s; }
+  .hero-slide:nth-child(2) { animation-delay: 5s; }
+  .hero-slide:nth-child(3) { animation-delay: 10s; }
+  .hero-slide:nth-child(4) { animation-delay: 15s; }
+  .hero-slide:nth-child(5) { animation-delay: 20s; }
+  @keyframes slidePan {
+    0% { opacity: 0; transform: translateX(2%) scale(1.05); }
+    4% { opacity: 1; transform: translateX(1.5%) scale(1.05); }
+    20% { opacity: 1; transform: translateX(-1.5%) scale(1.05); }
+    24% { opacity: 0; transform: translateX(-2%) scale(1.05); }
+    100% { opacity: 0; transform: translateX(-2%) scale(1.05); }
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center; position:relative; z-index:2; }
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
 
   .hero-eyebrow{ color:var(--gold-soft); margin-bottom:22px; }
@@ -385,14 +434,16 @@
   #stats{ padding:70px 0; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
   @media (max-width:760px){ .stats-grid{ grid-template-columns:repeat(2,1fr); } }
-  .stat-card{ text-align:center; padding:22px 10px; }
+  .stat-card{ text-align:center; padding:30px 10px; border-radius: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s var(--ease), background 0.4s var(--ease); }
+  .stat-card:hover{ transform: translateY(-5px); background: rgba(255,255,255,0.05); border-color: var(--gold-soft); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .stat-badge{
-    width:74px; height:74px; margin:0 auto 16px; border-radius:50%;
-    border:1px dashed var(--gold-soft);
+    width:80px; height:80px; margin:0 auto 16px; border-radius:50%;
+    border:1px solid var(--gold-soft);
+    background: rgba(214,165,68,0.1);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif; font-size:1.15rem; color:var(--gold-soft);
+    font-family:'Fraunces', serif; font-size:1.4rem; color:var(--gold-soft);
   }
-  .stat-label{ font-family:'Special Elite', monospace; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--cream-dim); }
+  .stat-label{ font-family:'Special Elite', monospace; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream-text); }
 
   /* ============ SECTION HEADERS ============ */
   .section{ padding:120px 0; }
@@ -494,10 +545,11 @@
   .values-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; margin-top:56px; }
   @media (max-width:900px){ .values-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:520px){ .values-grid{ grid-template-columns:1fr; } }
-  .value-card{ padding:26px 22px; border:1px solid var(--line); border-radius:4px; }
-  .value-card .vnum{ font-family:'Special Elite', monospace; font-size:0.7rem; color:var(--gold-soft); }
-  .value-card h4{ font-size:1.02rem; color:var(--cream-text); margin:12px 0 10px; }
-  .value-card p{ font-size:0.86rem; color:var(--cream-dim); line-height:1.6; }
+  .value-card{ padding:30px 26px; border:1px solid var(--line); border-radius:8px; transition: transform 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s; }
+  .value-card:hover { transform: translateY(-5px); background: rgba(214,165,68,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: rgba(214,165,68,0.3); }
+  .value-card .vnum{ font-family:'Special Elite', monospace; font-size:0.8rem; color:var(--gold-soft); margin-bottom: 8px; display: block; }
+  .value-card h4{ font-size:1.15rem; color:var(--cream-text); margin:12px 0 12px; }
+  .value-card p{ font-size:0.9rem; color:var(--cream-dim); line-height:1.7; margin:0; }
 
   /* ============ LEADERSHIP ============ */
   .team-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
@@ -565,12 +617,13 @@
 <body>
 
 <div id="preloader">
-  <svg class="seal" viewBox="0 0 120 120">
-    <circle class="ring-outer" cx="60" cy="60" r="55"></circle>
-    <circle class="ring-inner" cx="60" cy="60" r="42"></circle>
-    <text x="60" y="67" text-anchor="middle">S&amp;G</text>
-  </svg>
-  <div class="preload-label">Preparing shipment<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+  <img src="logo.png" alt="S&amp;G Logo" class="seal-logo">
+  <div class="brand-text-block preload-brand" style="margin-top: 20px; animation:fadeUp 0.8s var(--ease) forwards 0.4s; opacity:0;">
+    <div class="brand-main"><span class="s">S</span> <span class="amp">&amp;</span> <span class="g">G GLOBAL SOLUTIONS</span></div>
+    <div class="brand-private">PRIVATE LIMITED</div>
+    <div class="brand-tag">Your Partner for Sustainable Growth</div>
+  </div>
+  <div class="preload-label" style="margin-top: 20px;">Preparing shipment<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
 </div>
 
 <div id="progress-bar"></div>
@@ -602,10 +655,11 @@
 <header id="site-header">
   <div class="wrap">
     <a href="#home" class="logo-mark" data-scroll="home">
-      <div class="logo-badge">S&amp;G</div>
-      <div class="logo-text">
-        <div class="name">S&amp;G Global Solutions</div>
-        <div class="sub">Pvt. Ltd. &middot; Sangli, MH</div>
+      <img src="logo.png" alt="S&amp;G Logo" class="header-logo">
+      <div class="brand-text-block header-brand">
+        <div class="brand-main"><span class="s">S</span> <span class="amp">&amp;</span> <span class="g">G GLOBAL SOLUTIONS</span></div>
+        <div class="brand-private">PRIVATE LIMITED</div>
+        <div class="brand-tag">Your Partner for Sustainable Growth</div>
       </div>
     </a>
     <nav class="main-nav">
@@ -614,7 +668,6 @@
       <a href="#why" data-scroll="why">Why Us</a>
       <a href="#story" data-scroll="story">About</a>
       <a href="#leadership" data-scroll="leadership">Team</a>
-      <a href="#contact" data-scroll="contact" class="nav-cta">Get a Quote</a>
     </nav>
     <button id="menu-toggle" aria-label="Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
@@ -624,6 +677,13 @@
 
 <!-- ================= HERO ================= -->
 <section id="home">
+  <div class="hero-slider">
+    <div class="hero-slide" style="background-image: url('bg_hero_1.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_hero_2.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_hero_3.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_hero_4.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_hero_5.png');"></div>
+  </div>
   <div class="wrap hero-grid">
     <div>
       <div class="hero-eyebrow eyebrow reveal">Agri products import &amp; export</div>
@@ -662,42 +722,42 @@
   <div class="wrap">
     <div class="export-grid reveal">
       <div class="export-card">
-        <img class="bg" src="https://images.unsplash.com/photo-1574709755254-fcd942d09d5a?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy" />
+        <img class="bg" src="bg_pomegranates.png" alt="" loading="lazy" />
         <span class="num">01</span>
         <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 8c-2 3-2 5 0 7"/><circle cx="24" cy="26" r="16"/><path d="M15 20c3-2 6-2 9 0M24 20c3-2 6-2 9 0" /><path d="M12 30c4 6 10 9 12 9s8-3 12-9"/></svg>
         <h3>Pomegranates</h3>
         <p>Sangli is one of India's top pomegranate-growing regions. We export fresh, graded pomegranates that meet international phytosanitary standards.</p>
       </div>
       <div class="export-card">
-        <img class="bg" src="https://images.unsplash.com/photo-1745670922388-cc34082bb8cb?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy" />
+        <img class="bg" src="bg_grapes.png" alt="" loading="lazy" />
         <span class="num">02</span>
         <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 6v6"/><circle cx="18" cy="18" r="4.2"/><circle cx="30" cy="18" r="4.2"/><circle cx="14" cy="28" r="4.2"/><circle cx="24" cy="28" r="4.2"/><circle cx="34" cy="28" r="4.2"/><circle cx="19" cy="38" r="4.2"/><circle cx="29" cy="38" r="4.2"/></svg>
         <h3>Grapes</h3>
         <p>Fresh table grapes sourced directly from vineyards in and around Sangli, carefully packed for long-haul export.</p>
       </div>
       <div class="export-card">
-        <img class="bg" src="https://images.unsplash.com/photo-1608842850202-06e70ead4c10?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy" />
+        <img class="bg" src="bg_raisins.png" alt="" loading="lazy" />
         <span class="num">03</span>
         <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="14" cy="14" r="5" stroke-dasharray="2 2"/><path d="M14 19 A14 14 0 0 0 24 40"/><ellipse cx="26" cy="30" rx="5" ry="4"/><ellipse cx="34" cy="24" rx="5" ry="4"/><ellipse cx="36" cy="34" rx="5" ry="4"/></svg>
         <h3>Raisins</h3>
         <p>Sun-dried and processed raisins from Maharashtra's grape belt — a premium product in high demand across global markets.</p>
       </div>
       <div class="export-card">
-        <img class="bg" src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy" />
+        <img class="bg" src="bg_vegetables.png" alt="" loading="lazy" />
         <span class="num">04</span>
         <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 40h28l-3-16H13z"/><path d="M13 24h22"/><path d="M18 24c0-8 2-14 6-16 4 2 6 8 6 16"/></svg>
         <h3>Fresh Fruits &amp; Vegetables</h3>
         <p>Seasonal produce sourced through direct farm and APMC networks, graded and packed to maintain freshness in transit.</p>
       </div>
       <div class="export-card">
-        <img class="bg" src="https://images.unsplash.com/photo-1753866551936-998e5fcf6d5f?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy" />
+        <img class="bg" src="bg_grains.png" alt="" loading="lazy" />
         <span class="num">05</span>
         <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 8v30"/><path d="M24 12c-3 0-5 2-5 5s2 3 5 3 5 0 5-3-2-5-5-5z"/><path d="M24 20c-3 0-5 2-5 5s2 3 5 3 5 0 5-3-2-5-5-5z"/><path d="M18 42h12"/></svg>
         <h3>Grains &amp; Pulses</h3>
         <p>Rice, wheat, lentils, chickpeas, and other staple commodities sourced from trusted Indian farms for export.</p>
       </div>
       <div class="export-card">
-        <img class="bg" src="https://images.unsplash.com/photo-1775433205046-86e060feff06?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="" loading="lazy" />
+        <img class="bg" src="bg_spices.png" alt="" loading="lazy" />
         <span class="num">06</span>
         <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="15" y="18" width="18" height="22" rx="2"/><path d="M19 18v-4c0-2 2-4 5-4s5 2 5 4v4"/><path d="M15 26h18"/></svg>
         <h3>Spices &amp; Condiments</h3>
@@ -714,20 +774,20 @@
       <div class="eyebrow">Why Partner With Us</div>
       <h2 class="section-title">Rooted in Sangli's farming heartland, built for global trade.</h2>
     </div>
-    <div class="why-list reveal">
-      <div class="why-item">
+    <div class="why-list">
+      <div class="why-item reveal">
         <h3>Direct Farm &amp; APMC Sourcing</h3>
         <p>We work directly with farmers and APMC networks to source produce at peak quality, ensuring traceability and fair pricing.</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal reveal-delay-1">
         <h3>Strict Grading &amp; Packaging</h3>
         <p>Every shipment is graded, tested, and packed to meet APEDA, FSSAI, and destination-country import standards.</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal reveal-delay-2">
         <h3>End-to-End Logistics</h3>
         <p>We manage the full supply chain — from farm gate to port to final destination — so you receive consistent quality, shipment after shipment.</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal reveal-delay-3">
         <h3>Transparent &amp; Reliable</h3>
         <p>Clear documentation, honest pricing, and timely communication. No surprises from inquiry to delivery.</p>
       </div>
@@ -743,10 +803,8 @@
       <h2 class="section-title">Our Story</h2>
     </div>
     <div class="about-grid">
-      <div class="about-frame reveal">
-        <span class="corner tl"></span>
-        <span class="corner br"></span>
-        <span>Company photograph<br>to be added</span>
+      <div class="about-frame reveal" style="background: none; border: none; padding: 0; display: block; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px;">
+        <img src="about_warehouse.png" alt="Warehouse Facility" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
       </div>
       <div class="about-copy reveal reveal-delay-1">
         <p>S&amp;G Global Solutions Pvt. Ltd. was founded with a clear vision: to connect India's finest agricultural produce with international markets. Sangli, Maharashtra — where we are headquartered — is one of India's most celebrated farming regions, renowned for its pomegranates, grapes, and raisins.</p>
@@ -776,25 +834,21 @@
     </div>
     <div class="team-grid">
       <div class="team-card reveal">
-        <div class="team-photo">P</div>
         <h4>Prakash</h4>
         <div class="role">Owner &amp; Director</div>
         <p>Leads S&amp;G Global Solutions with a vision to make Indian agri produce a trusted name in global markets, driving growth across domestic and export markets.</p>
       </div>
       <div class="team-card reveal reveal-delay-1">
-        <div class="team-photo">OT</div>
         <h4>Operations Team</h4>
         <div class="role">Logistics &amp; Compliance</div>
         <p>Handles end-to-end shipment coordination, customs documentation, and regulatory compliance for smooth cross-border trade.</p>
       </div>
       <div class="team-card reveal reveal-delay-2">
-        <div class="team-photo">ST</div>
         <h4>Sourcing Team</h4>
         <div class="role">Farm Relations &amp; QC</div>
         <p>Builds and maintains relationships with farmers and APMC networks across Maharashtra, overseeing grading and quality control.</p>
       </div>
       <div class="team-card reveal reveal-delay-3">
-        <div class="team-photo">TT</div>
         <h4>Trade Team</h4>
         <div class="role">Global Buyer Relations</div>
         <p>Identifies and nurtures relationships with international importers and wholesale buyers, built on long-term trust.</p>
@@ -836,8 +890,8 @@
           <div><div class="lbl">Head Office</div><div class="val">Sangli, Maharashtra, India</div></div>
         </div>
       </div>
-      <div class="about-frame" style="aspect-ratio:auto;height:100%;min-height:220px;">
-        <span>Facility / warehouse<br>photograph to be added</span>
+      <div class="about-frame reveal" style="background: none; border: none; padding: 0; display: block; aspect-ratio: auto; height: 100%; min-height: 220px; overflow: hidden; border-radius: 8px;">
+        <img src="office_reception.png" alt="S&G Global Solutions Office" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
       </div>
     </div>
   </div>
@@ -903,7 +957,7 @@ window.addEventListener('load', () => {
     preloader.classList.add('hide');
     document.body.style.overflow = '';
     initRevealCheck();
-  }, 1900);
+  }, 3900);
 });
 document.body.style.overflow = 'hidden';
 
@@ -1030,7 +1084,8 @@ function initRevealCheck(){
     entries.forEach(entry => {
       if (entry.isIntersecting){
         entry.target.classList.add('in');
-        revealObserver.unobserve(entry.target);
+      } else {
+        entry.target.classList.remove('in');
       }
     });
   }, { threshold:0.15 });
