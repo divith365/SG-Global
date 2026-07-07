@@ -47,10 +47,11 @@
   button{ font-family:inherit; cursor:pointer; }
 
   .eyebrow{
-    font-family:'Special Elite', monospace;
+    font-family:'Inter', sans-serif;
+    font-weight:700;
     text-transform:uppercase;
     letter-spacing:0.18em;
-    font-size:0.72rem;
+    font-size:0.83rem;
     display:inline-flex;
     align-items:center;
     gap:0.6em;
@@ -236,25 +237,26 @@
   }
   .brand-main {
     font-family: 'Fraunces', serif;
-    font-size: 24px;
+    font-size: 26px;
     color: #0c2b5e;
     font-weight: 700;
     display: flex;
     align-items: baseline;
     letter-spacing: 0.5px;
-    animation: textGlow 2.5s ease-in-out infinite alternate;
   }
-  @keyframes textGlow {
-    from {
-      text-shadow: 0 0 4px rgba(46, 136, 42, 0.4), 0 0 10px rgba(12, 43, 94, 0.2);
-    }
-    to {
-      text-shadow: 0 0 10px rgba(46, 136, 42, 0.8), 0 0 20px rgba(12, 43, 94, 0.5);
-    }
+  .brand-main .letter {
+    display: inline-block;
+    animation: letterWave 3.5s infinite ease-in-out;
+    animation-delay: calc(0.06s * var(--i));
+    transform-origin: bottom center;
   }
-  .brand-main .s { color: #2e882a; font-size: 1.15em; }
-  .brand-main .amp { color: #666; font-family: 'Inter', sans-serif; font-size: 0.85em; margin: 0 4px; }
-  .brand-main .g { color: #0c2b5e; font-size: 1.15em; }
+  @keyframes letterWave {
+    0%, 75%, 100% { transform: scale(1); color: inherit; }
+    35% { transform: scale(1.18); color: #2e882a; }
+  }
+  .brand-main .s { color: #2e882a; }
+  .brand-main .amp { color: #666; font-family: 'Inter', sans-serif; font-size: 0.85em; }
+  .brand-main .g { color: #0c2b5e; }
   
   .brand-private {
     font-family: 'Inter', sans-serif;
@@ -286,11 +288,13 @@
   }
   
   /* Scale for Header */
-  .header-brand .brand-main { font-size: 16px; }
-  .header-brand .brand-private { font-size: 8.5px; margin: 4px 0; letter-spacing: 3px; }
-  .header-brand .brand-tag { font-size: 8.5px; }
+  .header-brand .brand-main { font-size: 19px; }
+  .header-brand .brand-private { font-size: 9.5px; margin: 4px 0; letter-spacing: 3.2px; }
+  .header-brand .brand-tag { font-size: 9.5px; }
 
-  nav.main-nav{ display:flex; align-items:center; gap:34px; }
+
+
+  nav.main-nav{ display:flex; align-items:center; gap:34px; position: relative; z-index: 2; }
   nav.main-nav a{
     font-size:0.85rem; color:var(--ink-soft);
     position:relative; padding:4px 0;
@@ -556,15 +560,8 @@
   @media (max-width:900px){ .team-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:560px){ .team-grid{ grid-template-columns:1fr; } }
   .team-card{ text-align:left; }
-  .team-photo{
-    aspect-ratio:1; border-radius:4px; border:1px solid var(--line-dark);
-    background:var(--paper-dim);
-    display:flex; align-items:center; justify-content:center;
-    margin-bottom:18px;
-    font-family:'Fraunces', serif; font-size:1.6rem; color:var(--ink-soft);
-  }
-  .team-card h4{ font-size:1.05rem; color:var(--ink); }
-  .team-card .role{ font-family:'Special Elite', monospace; font-size:0.66rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--maroon); margin:6px 0 12px; }
+  .team-card h4{ font-size:1.15rem; color:var(--ink); margin-bottom: 4px; }
+  .team-card .role{ font-family:'Inter', sans-serif; font-weight:700; font-size:0.9rem; letter-spacing:0.06em; text-transform:uppercase; color:#0c2b5e; margin:6px 0 12px; display:inline-block; }
   .team-card p{ font-size:0.86rem; line-height:1.6; color:var(--ink-soft); }
 
   /* ============ CTA BAND ============ */
@@ -580,7 +577,7 @@
   #cta-band .btn{ margin-top:38px; }
 
   /* ============ CONTACT ============ */
-  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  .contact-grid{ display:grid; grid-template-columns:240px 1fr; gap:60px; align-items: center; }
   @media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; } }
   .contact-item{ display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--line-dark); }
   .contact-item .ic{ width:22px; height:22px; flex-shrink:0; color:var(--maroon); margin-top:2px; }
@@ -609,6 +606,7 @@
   .footer-credit a{ color:var(--cream-dim); opacity:1; text-decoration:none; transition:color 0.3s; }
   .footer-credit a:hover{ color:var(--gold-soft); }
 
+
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
   }
@@ -619,7 +617,28 @@
 <div id="preloader">
   <img src="logo.png" alt="S&amp;G Logo" class="seal-logo">
   <div class="brand-text-block preload-brand" style="margin-top: 20px; animation:fadeUp 0.8s var(--ease) forwards 0.4s; opacity:0;">
-    <div class="brand-main"><span class="s">S</span> <span class="amp">&amp;</span> <span class="g">G GLOBAL SOLUTIONS</span></div>
+    <div class="brand-main">
+      <span class="letter s" style="--i:1">S</span>
+      <span class="amp" style="--i:2">&nbsp;&amp;&nbsp;</span>
+      <span class="letter g" style="--i:3">G</span>
+      <span>&nbsp;</span>
+      <span class="letter" style="--i:4">G</span>
+      <span class="letter" style="--i:5">L</span>
+      <span class="letter" style="--i:6">O</span>
+      <span class="letter" style="--i:7">B</span>
+      <span class="letter" style="--i:8">A</span>
+      <span class="letter" style="--i:9">L</span>
+      <span>&nbsp;</span>
+      <span class="letter" style="--i:10">S</span>
+      <span class="letter" style="--i:11">O</span>
+      <span class="letter" style="--i:12">L</span>
+      <span class="letter" style="--i:13">U</span>
+      <span class="letter" style="--i:14">T</span>
+      <span class="letter" style="--i:15">I</span>
+      <span class="letter" style="--i:16">O</span>
+      <span class="letter" style="--i:17">N</span>
+      <span class="letter" style="--i:18">S</span>
+    </div>
     <div class="brand-private">PRIVATE LIMITED</div>
     <div class="brand-tag">Your Partner for Sustainable Growth</div>
   </div>
@@ -653,11 +672,33 @@
 </button>
 
 <header id="site-header">
-  <div class="wrap">
+
+  <div class="wrap" style="position: relative; z-index: 2;">
     <a href="#home" class="logo-mark" data-scroll="home">
       <img src="logo.png" alt="S&amp;G Logo" class="header-logo">
       <div class="brand-text-block header-brand">
-        <div class="brand-main"><span class="s">S</span> <span class="amp">&amp;</span> <span class="g">G GLOBAL SOLUTIONS</span></div>
+        <div class="brand-main">
+          <span class="letter s" style="--i:1">S</span>
+          <span class="amp" style="--i:2">&nbsp;&amp;&nbsp;</span>
+          <span class="letter g" style="--i:3">G</span>
+          <span>&nbsp;</span>
+          <span class="letter" style="--i:4">G</span>
+          <span class="letter" style="--i:5">L</span>
+          <span class="letter" style="--i:6">O</span>
+          <span class="letter" style="--i:7">B</span>
+          <span class="letter" style="--i:8">A</span>
+          <span class="letter" style="--i:9">L</span>
+          <span>&nbsp;</span>
+          <span class="letter" style="--i:10">S</span>
+          <span class="letter" style="--i:11">O</span>
+          <span class="letter" style="--i:12">L</span>
+          <span class="letter" style="--i:13">U</span>
+          <span class="letter" style="--i:14">T</span>
+          <span class="letter" style="--i:15">I</span>
+          <span class="letter" style="--i:16">O</span>
+          <span class="letter" style="--i:17">N</span>
+          <span class="letter" style="--i:18">S</span>
+        </div>
         <div class="brand-private">PRIVATE LIMITED</div>
         <div class="brand-tag">Your Partner for Sustainable Growth</div>
       </div>
@@ -688,7 +729,7 @@
     <div>
       <div class="hero-eyebrow eyebrow reveal">Agri products import &amp; export</div>
       <h1 class="hero-title reveal reveal-delay-1">Premium Indian Agri Produce, <em>Delivered to the World.</em></h1>
-      <p class="hero-sub reveal reveal-delay-2">S&amp;G Global Solutions Pvt. Ltd. connects India's finest pomegranates, grapes, raisins, and agricultural commodities with buyers across the globe — straight from the farms of Sangli, Maharashtra.</p>
+      <p class="hero-sub reveal reveal-delay-2">S&amp;G Global Solutions Pvt. Ltd. connects India's finest pomegranates, grapes, raisins, and agricultural commodities with buyers across the globe — straight from the finest farms across South India.</p>
       <div class="hero-ctas reveal reveal-delay-3">
         <a href="#contact" data-scroll="contact" class="btn btn-primary">Get a Quote</a>
         <a href="#export" data-scroll="export" class="btn btn-ghost">Our Products</a>
@@ -715,8 +756,8 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">What We Export</div>
-      <h2 class="section-title">Premium agricultural commodities, sourced from the heart of Maharashtra.</h2>
-      <p class="section-sub">Every shipment begins in the farming belt around Sangli — and ends on a table somewhere in the world.</p>
+      <h2 class="section-title">Premium agricultural commodities, sourced from across South India.</h2>
+      <p class="section-sub">Every shipment begins in the farming belts across South India — and ends on a table somewhere in the world.</p>
     </div>
   </div>
   <div class="wrap">
@@ -772,7 +813,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Why Partner With Us</div>
-      <h2 class="section-title">Rooted in Sangli's farming heartland, built for global trade.</h2>
+      <h2 class="section-title">Rooted in South India's farming heartland, built for global trade.</h2>
     </div>
     <div class="why-list">
       <div class="why-item reveal">
@@ -807,7 +848,7 @@
         <img src="about_warehouse.png" alt="Warehouse Facility" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
       </div>
       <div class="about-copy reveal reveal-delay-1">
-        <p>S&amp;G Global Solutions Pvt. Ltd. was founded with a clear vision: to connect India's finest agricultural produce with international markets. Sangli, Maharashtra — where we are headquartered — is one of India's most celebrated farming regions, renowned for its pomegranates, grapes, and raisins.</p>
+        <p>S&amp;G Global Solutions Pvt. Ltd. was founded with a clear vision: to connect India's finest agricultural produce with international markets. We strategically source from across the rich agricultural landscapes of South India, delivering the finest pomegranates, grapes, and raisins from our headquarters in Sangli, Maharashtra.</p>
         <p>We bring together deep local farming relationships, export expertise, and a commitment to quality at every stage of the supply chain. By working directly with farmers and APMC networks, we source produce at peak quality and manage everything from grading and packaging to end-to-end logistics.</p>
         <p>Our goal is simple — to be a trusted bridge between India's agricultural heartland and global markets, delivering premium produce with consistency, integrity, and care.</p>
         <div class="mission-box">
@@ -834,8 +875,8 @@
     </div>
     <div class="team-grid">
       <div class="team-card reveal">
-        <h4>Prakash</h4>
-        <div class="role">Owner &amp; Director</div>
+        <h4>Mr. Prakash Katte</h4>
+        <div class="role">Founder and Director</div>
         <p>Leads S&amp;G Global Solutions with a vision to make Indian agri produce a trusted name in global markets, driving growth across domestic and export markets.</p>
       </div>
       <div class="team-card reveal reveal-delay-1">
@@ -846,7 +887,7 @@
       <div class="team-card reveal reveal-delay-2">
         <h4>Sourcing Team</h4>
         <div class="role">Farm Relations &amp; QC</div>
-        <p>Builds and maintains relationships with farmers and APMC networks across Maharashtra, overseeing grading and quality control.</p>
+        <p>Builds and maintains relationships with farmers and APMC networks across South India, overseeing grading and quality control.</p>
       </div>
       <div class="team-card reveal reveal-delay-3">
         <h4>Trade Team</h4>
@@ -876,6 +917,9 @@
       <p class="section-sub">Whether you're sourcing pomegranates, raisins, grapes or staple commodities — our team responds directly.</p>
     </div>
     <div class="contact-grid reveal">
+      <div class="about-frame" style="background: none; border: none; padding: 0; display: block; aspect-ratio: 1/1; overflow: hidden; border-radius: 8px; width: 100%; max-width: 240px; margin: 0;">
+        <img src="office_reception.png" alt="S&amp;G Global Solutions Office" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
+      </div>
       <div>
         <div class="contact-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1"/></svg>
@@ -885,13 +929,6 @@
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6.2 6.2l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
           <div><div class="lbl">Phone</div><div class="val">+91 93565 96153</div></div>
         </div>
-        <div class="contact-item">
-          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div><div class="lbl">Head Office</div><div class="val">Sangli, Maharashtra, India</div></div>
-        </div>
-      </div>
-      <div class="about-frame reveal" style="background: none; border: none; padding: 0; display: block; aspect-ratio: auto; height: 100%; min-height: 220px; overflow: hidden; border-radius: 8px;">
-        <img src="office_reception.png" alt="S&G Global Solutions Office" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
       </div>
     </div>
   </div>
@@ -902,10 +939,10 @@
     <div class="footer-grid">
       <div>
         <div class="fname">S&amp;G Global Solutions Pvt. Ltd.</div>
-        <div class="faddr">
+        <a href="https://www.google.com/maps/place/Jath,+Maharashtra+416404/@16.8991026,75.0730943,10z/data=!4m15!1m8!3m7!1s0x3bc6c694a678842d:0x2493dfac6957edd6!2sJath,+Maharashtra+416404!3b1!8m2!3d17.0526711!4d75.2156414!16s%2Fm%2F09g6v_t!3m5!1s0x3bc6c694a678842d:0x2493dfac6957edd6!8m2!3d17.0526711!4d75.2156414!16s%2Fm%2F09g6v_t?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="faddr" style="display:flex; gap:8px; color:var(--cream-dim); font-size:0.88rem; margin-bottom:16px; text-decoration:none; transition:color 0.3s;">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-top:2px;flex-shrink:0;"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Sangli, Maharashtra, India</span>
-        </div>
+          <span style="border-bottom: 1px dashed rgba(239,228,205,0.3);">Jath, Sangli, Maharashtra, India - 416404</span>
+        </a>
         <p class="desc">Connecting India's finest agricultural produce — pomegranates, grapes, raisins, and more — with buyers across the globe.</p>
       </div>
       <div>
@@ -927,10 +964,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6.2 6.2l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
             +91 93565 96153
           </a>
-          <div>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Sangli, Maharashtra, India
-          </div>
+
         </div>
       </div>
     </div>
