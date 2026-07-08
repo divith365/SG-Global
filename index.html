@@ -719,6 +719,164 @@
 
 
   /* ============ THEME OVERRIDES ============ */
+  /* ============ SERVICES GRID & CARDS ============ */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+  }
+  .service-card {
+    padding: 40px 32px;
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    transition: transform 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s;
+    display: flex;
+    flex-direction: column;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    background: var(--bg-alt-2);
+    border-color: var(--gold-soft);
+    box-shadow: var(--shadow);
+  }
+  .service-card .num {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.75rem;
+    color: var(--gold-soft);
+    margin-bottom: 20px;
+    display: block;
+  }
+  .service-card h3 {
+    font-size: 1.3rem;
+    color: var(--cream-text);
+    margin-bottom: 14px;
+  }
+  .service-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--cream-dim);
+  }
+  .service-card .icon {
+    width: 40px;
+    height: 40px;
+    color: var(--gold-soft);
+    margin-bottom: 20px;
+  }
+
+  /* ============ INFRASTRUCTURE GRID & CARDS ============ */
+  .infra-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  .infra-card {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .infra-card:hover {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(214, 165, 68, 0.2);
+  }
+  .infra-card svg {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    color: var(--gold-soft);
+  }
+  .infra-card h4 {
+    font-size: 1.15rem;
+    color: var(--cream-text);
+    margin-bottom: 8px;
+  }
+  .infra-card p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: var(--cream-dim);
+  }
+
+  /* ============ PROJECTS LIST GRID ============ */
+  .projects-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .project-item {
+    background: var(--bg-alt);
+    border-left: 2px solid var(--gold);
+    padding: 20px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.3s var(--ease), background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .project-item:hover {
+    transform: translateX(6px);
+    background: var(--bg-alt-2);
+  }
+  .project-item span {
+    color: var(--cream-text);
+  }
+  .project-item .check {
+    color: var(--gold-soft);
+    font-size: 0.8rem;
+    font-family: 'Special Elite', monospace;
+  }
+
+  /* ============ COMMITMENT BOX ============ */
+  .commitment-box {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px dashed var(--line);
+    background: rgba(255, 255, 255, 0.01);
+  }
+  .commitment-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--gold-soft);
+    margin-bottom: 24px;
+  }
+  .commitment-desc {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--cream-dim);
+  }
+
+  /* ============ RESPONSIVE LAYOUTS ============ */
+  @media (max-width: 960px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 900px) {
+    .projects-list-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 760px) {
+    .infra-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+    .projects-list-grid {
+      grid-template-columns: 1fr;
+    }
+  }
   body.theme-civil {
     --bg: #1f2421;
     --bg-alt: #282f2b;
