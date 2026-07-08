@@ -809,10 +809,15 @@
     z-index: 1;
   }
   #division-it .hero-slide {
-    animation: slidePan 25s infinite linear;
+    animation-name: slidePan;
+    animation-duration: 25s;
   }
   #division-civil .hero-slide {
-    animation: slidePan6 30s infinite linear;
+    animation-name: slidePan6;
+    animation-duration: 30s;
+  }
+  #division-civil .hero-slide:nth-child(6) {
+    animation-delay: 25s;
   }
   @keyframes slidePan6 {
     0% { opacity: 0; transform: scale(1.05) translate(0, 0); }
