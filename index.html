@@ -408,18 +408,20 @@
     #menu-toggle{ display:block; }
     nav.main-nav{
       display:none;
-      position:fixed;
-      top:64px;
-      left:0;
-      right:0;
-      bottom:0;
+      position:absolute;
+      top:100%;
+      right:clamp(20px,5vw,56px);
+      width:260px;
       background:var(--bg);
       flex-direction:column;
-      padding:24px;
-      gap:22px;
+      padding:20px 24px;
+      gap:16px;
       z-index:999;
+      border-radius:8px;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      max-height:80vh;
       overflow-y:auto;
-      border-bottom:1px solid var(--line);
     }
     nav.main-nav.open{
       display:flex;
