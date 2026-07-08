@@ -402,7 +402,8 @@
     transform: translateY(-1px);
   }
 
-  #menu-toggle{ display:none; background:none; border:none; color:var(--ink); }
+  #menu-toggle{ display:none; background:none; border:none; color:var(--ink); cursor:pointer; padding:6px; z-index:1000; }
+  #menu-toggle svg{ width:28px; height:28px; display:block; }
   @media (max-width:860px){
     #menu-toggle{ display:block; }
     nav.main-nav{
