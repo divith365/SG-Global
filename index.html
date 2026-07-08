@@ -1722,7 +1722,7 @@
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-top:2px;flex-shrink:0;"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span style="border-bottom: 1px dashed rgba(239,228,205,0.3);">Jath, Sangli, Maharashtra, India - 416404</span>
         </a>
-        <p class="desc">Connecting India's finest agricultural produce — pomegranates, grapes, raisins, and more — with buyers across the globe.</p>
+        <p id="footer-desc" class="desc">Connecting India's finest agricultural produce — pomegranates, grapes, raisins, and more — with buyers across the globe.</p>
       </div>
       <div>
         <h5>Quick Links</h5>
@@ -1870,6 +1870,19 @@ function switchDivision(divisionId) {
   const sideNav = document.getElementById('side-nav');
   if (sideNav) {
     sideNav.style.display = (divisionId === 'agri') ? '' : 'none';
+  }
+  
+  // Update document title and footer description dynamically
+  const footerDesc = document.getElementById('footer-desc');
+  if (divisionId === 'it') {
+    document.title = "S&G Global Solutions - IT & ITES Services";
+    if (footerDesc) footerDesc.textContent = "Delivering enterprise-grade IT solutions, custom software development, cloud engineering, and scalable IT Enabled Services (ITES) globally.";
+  } else if (divisionId === 'civil') {
+    document.title = "S&G Global Solutions - Civil Construction";
+    if (footerDesc) footerDesc.textContent = "Building premium residential, commercial, and large-scale civil infrastructure with engineering excellence and safety.";
+  } else {
+    document.title = "S&G Global Solutions - Agri Products";
+    if (footerDesc) footerDesc.textContent = "Connecting India's finest agricultural produce — pomegranates, grapes, raisins, and more — with buyers across the globe.";
   }
   
   // 5. Scroll to top
