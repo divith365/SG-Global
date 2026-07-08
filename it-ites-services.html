@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S&G Global Solutions Pvt. Ltd. — Premium Indian Agri Produce</title>
+<title>IT &amp; ITES Services — S&amp;G Global Solutions Pvt. Ltd.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Special+Elite&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#251a13;
-    --bg-alt:#31241a;
-    --bg-alt-2:#3c2c1f;
+    --bg:#111625; /* Customized deep dark navy for IT theme */
+    --bg-alt:#1b2234;
+    --bg-alt-2:#242e44;
     --paper:#f1e6ce;
     --paper-dim:#e8dabb;
     --ink:#20150e;
@@ -292,8 +292,6 @@
   .header-brand .brand-private { font-size: 9.5px; margin: 4px 0; letter-spacing: 3.2px; }
   .header-brand .brand-tag { font-size: 9.5px; }
 
-
-
   nav.main-nav{ display:flex; align-items:center; gap:34px; position: relative; z-index: 2; }
   nav.main-nav a{
     font-size:0.85rem; color:var(--ink-soft);
@@ -306,6 +304,7 @@
     background:var(--gold); transition:width 0.35s var(--ease);
   }
   nav.main-nav a:hover::after, nav.main-nav a.active::after{ width:100%; }
+  
   .nav-cta{
     font-family:'Special Elite', monospace;
     font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase;
@@ -480,38 +479,43 @@
     overflow:hidden;
   }
   .hero-slider { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-  .hero-slider::after { content: ''; position: absolute; inset: 0; background: rgba(28, 19, 12, 0.75); z-index: 1; }
+  .hero-slider::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(17, 22, 37, 0.85) 0%, rgba(17, 22, 37, 0.9) 100%);
+    z-index: 1;
+  }
   .hero-slide {
     position: absolute; inset: -5%; width: 110%; height: 110%;
     background-size: cover; background-position: center;
-    opacity: 0; animation: slidePan 25s infinite linear; z-index: 0;
+    opacity: 0;
+    animation: slidePan3 18s infinite linear;
+    z-index: 0;
   }
   .hero-slide:nth-child(1) { animation-delay: 0s; }
-  .hero-slide:nth-child(2) { animation-delay: 5s; }
-  .hero-slide:nth-child(3) { animation-delay: 10s; }
-  .hero-slide:nth-child(4) { animation-delay: 15s; }
-  .hero-slide:nth-child(5) { animation-delay: 20s; }
-  @keyframes slidePan {
-    0% { opacity: 0; transform: translateX(2%) scale(1.05); }
-    4% { opacity: 1; transform: translateX(1.5%) scale(1.05); }
-    20% { opacity: 1; transform: translateX(-1.5%) scale(1.05); }
-    24% { opacity: 0; transform: translateX(-2%) scale(1.05); }
-    100% { opacity: 0; transform: translateX(-2%) scale(1.05); }
+  .hero-slide:nth-child(2) { animation-delay: 6s; }
+  .hero-slide:nth-child(3) { animation-delay: 12s; }
+  
+  @keyframes slidePan3 {
+    0% { opacity: 0; transform: scale(1.05) translate(0, 0); }
+    6.7% { opacity: 1; transform: scale(1.06) translate(-0.3%, -0.3%); }
+    26.7% { opacity: 1; transform: scale(1.1) translate(-1.2%, -1.2%); }
+    33.3% { opacity: 0; transform: scale(1.12) translate(-1.5%, -1.5%); }
+    100% { opacity: 0; transform: scale(1.05) translate(0, 0); }
   }
-  .hero-grid{ display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center; position:relative; z-index:2; }
+  .hero-grid{ display:grid; grid-template-columns:1.2fr 0.8fr; gap:60px; align-items:center; position:relative; z-index:2; }
   @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
 
   .hero-eyebrow{ color:var(--gold-soft); margin-bottom:22px; }
   .hero-title{
-    font-size:clamp(2.3rem, 5vw, 3.7rem);
-    line-height:1.08;
+    font-size:clamp(2.1rem, 5vw, 3.4rem);
+    line-height:1.15;
     color:var(--cream-text);
     letter-spacing:-0.01em;
   }
   .hero-title em{ font-style:italic; color:var(--gold-soft); font-weight:500; }
   .hero-sub{
-    margin-top:24px; max-width:520px;
-    font-size:1.02rem; line-height:1.7; color:var(--cream-dim);
+    margin-top:24px; max-width:540px;
+    font-size:1.02rem; line-height:1.75; color:var(--cream-dim);
   }
   .hero-ctas{ display:flex; gap:16px; margin-top:38px; flex-wrap:wrap; }
   .btn{
@@ -525,207 +529,213 @@
   .btn-ghost{ background:transparent; color:var(--cream-text); border:1px solid var(--line); }
   .btn-ghost:hover{ transform:translateY(-3px); border-color:var(--cream-text); }
 
-  /* Stamp badge */
-  .stamp{
-    position:absolute;
-    border:2px solid var(--maroon);
-    color:var(--maroon);
-    border-radius:50%;
-    width:118px; height:118px;
-    display:flex; align-items:center; justify-content:center;
-    text-align:center;
-    font-family:'Special Elite', monospace;
-    font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase;
-    transform:rotate(-11deg);
-    opacity:0.9;
-    mix-blend-mode:normal;
-  }
-  .stamp::before{
-    content:''; position:absolute; inset:6px; border:1px solid var(--maroon); border-radius:50%; opacity:0.6;
-  }
-  .hero-visual{ position:relative; height:220px; }
-  .hero-visual .stamp{ top:8px; right:10px; }
-
-  /* Route diagram (signature element) */
-  .route{
-    position:relative;
-    padding:28px 22px;
-    border:1px solid var(--line);
-    background:rgba(241,230,206,0.03);
+  .hero-badge{
+    border:1px dashed var(--gold);
+    padding:32px;
     border-radius:4px;
+    background:rgba(214,165,68,0.03);
+    backdrop-filter:blur(5px);
+    max-width:320px;
+    margin:0 auto;
+    text-align:center;
   }
-  .route-title{ font-family:'Special Elite', monospace; font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream-dim); margin-bottom:18px; }
-  .route-svg{ width:100%; height:auto; display:block; }
-  .route-line{
-    stroke:var(--gold-soft);
-    stroke-width:1.4;
-    stroke-dasharray:6 7;
-    stroke-dashoffset:400;
-    transition:stroke-dashoffset 1.8s var(--ease);
+  .hero-badge h4{
+    font-family:'Special Elite', monospace;
+    font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-soft);
+    margin-bottom:12px;
   }
-  .route.in .route-line{ stroke-dashoffset:0; }
-  .route-node circle{ fill:var(--bg); stroke:var(--gold-soft); stroke-width:1.4; }
-  .route-node text{ font-family:'Special Elite', monospace; font-size:9px; fill:var(--cream-text); text-transform:uppercase; letter-spacing:0.06em; }
-  .route-node .sub{ fill:var(--cream-dim); font-size:7.5px; }
-  .route-mark{
-    fill:var(--maroon);
-    opacity:0;
-    transition:opacity 0.4s var(--ease) 1.6s;
+  .hero-badge p{
+    font-size:0.9rem; line-height:1.6; color:var(--cream-dim);
   }
-  .route.in .route-mark{ opacity:1; }
-
-  /* ============ STATS ============ */
-  #stats{ padding:70px 0; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
-  @media (max-width:760px){ .stats-grid{ grid-template-columns:repeat(2,1fr); } }
-  .stat-card{ text-align:center; padding:30px 10px; border-radius: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s var(--ease), background 0.4s var(--ease); }
-  .stat-card:hover{ transform: translateY(-5px); background: rgba(255,255,255,0.05); border-color: var(--gold-soft); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-  .stat-badge{
-    width:80px; height:80px; margin:0 auto 16px; border-radius:50%;
-    border:1px solid var(--gold-soft);
-    background: rgba(214,165,68,0.1);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif; font-size:1.4rem; color:var(--gold-soft);
-  }
-  .stat-label{ font-family:'Special Elite', monospace; font-size:0.75rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--cream-text); }
 
   /* ============ SECTION HEADERS ============ */
   .section{ padding:120px 0; }
   .section-alt{ background:var(--bg-alt); }
-  .section-head{ max-width:640px; margin-bottom:64px; }
+  .section-head{ max-width:700px; margin-bottom:64px; }
   .section-head .eyebrow{ color:var(--maroon); }
   .light .section-head .eyebrow{ color:var(--maroon-deep); }
-  .section-title{ font-size:clamp(1.8rem,3.4vw,2.6rem); margin-top:16px; color:var(--cream-text); }
-  .section-sub{ margin-top:18px; color:var(--cream-dim); font-size:1rem; line-height:1.7; }
+  .section-title{ font-size:clamp(1.8rem,3.4vw,2.5rem); margin-top:16px; color:var(--cream-text); }
+  .section-sub{ margin-top:18px; color:var(--cream-dim); font-size:1rem; line-height:1.75; }
 
   /* Light (paper) section variant */
   .light{ background:var(--paper); color:var(--ink); }
   .light .section-title{ color:var(--ink); }
   .light .section-sub{ color:var(--ink-soft); }
 
-  /* ============ EXPORT CARDS ============ */
-  .export-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  @media (max-width:900px){ .export-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .export-grid{ grid-template-columns:1fr; } }
-  .export-card{
-    position:relative;
-    overflow:hidden;
-    min-height:360px;
+  /* ============ SERVICES CARDS ============ */
+  .services-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  @media (max-width:960px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .services-grid{ grid-template-columns:1fr; } }
+  
+  .service-card{
+    padding:40px 32px;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:4px;
+    transition:transform 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s;
     display:flex;
     flex-direction:column;
-    justify-content:flex-end;
-    padding:32px 30px;
-    background:var(--bg);
   }
-  .export-card .bg{
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    transition:transform 1.4s var(--ease);
-    z-index:0;
+  .service-card:hover{
+    transform:translateY(-6px);
+    background:var(--bg-alt-2);
+    border-color:var(--gold-soft);
+    box-shadow:var(--shadow);
   }
-  .export-card::after{
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(37,26,19,0.18) 0%, rgba(28,19,12,0.55) 55%, rgba(18,12,8,0.93) 100%);
-    z-index:1;
+  .service-card .num{
+    font-family:'Special Elite', monospace;
+    font-size:0.75rem; color:var(--gold-soft);
+    margin-bottom:20px;
+    display:block;
   }
-  .export-card:hover .bg{ transform:scale(1.08); }
-  .export-card > *:not(.bg){ position:relative; z-index:2; }
-  .export-card .icon{ width:38px; height:38px; color:var(--gold-soft); margin-bottom:20px; filter:drop-shadow(0 1px 3px rgba(0,0,0,0.5)); }
-  .export-card h3{ font-size:1.15rem; color:#fff; margin-bottom:10px; text-shadow:0 1px 4px rgba(0,0,0,0.4); }
-  .export-card p{ font-size:0.88rem; line-height:1.6; color:rgba(239,228,205,0.88); }
-  .export-card .num{
-    position:absolute; top:24px; right:28px;
-    font-family:'Special Elite', monospace; font-size:0.7rem; color:rgba(239,228,205,0.75);
-    z-index:2;
+  .service-card h3{
+    font-size:1.3rem; color:var(--cream-text); margin-bottom:14px;
+  }
+  .service-card p{
+    font-size:0.9rem; line-height:1.7; color:var(--cream-dim);
+  }
+  .service-card .icon{
+    width:40px; height:40px; color:var(--gold-soft); margin-bottom:20px;
   }
 
-  /* ============ WHY / VALUES with route thread ============ */
-  .why-list{ position:relative; padding-left:40px; }
-  .why-list::before{
-    content:''; position:absolute; left:9px; top:10px; bottom:10px; width:1px;
-    background:repeating-linear-gradient(to bottom, var(--maroon-deep) 0 6px, transparent 6px 12px);
-  }
-  .why-item{ position:relative; padding-bottom:52px; }
-  .why-item:last-child{ padding-bottom:0; }
-  .why-item::before{
-    content:''; position:absolute; left:-40px; top:4px; width:19px; height:19px; border-radius:50%;
-    background:var(--paper); border:2px solid var(--maroon);
-  }
-  .why-item h3{ font-size:1.2rem; color:var(--ink); margin-bottom:10px; }
-  .why-item p{ color:var(--ink-soft); line-height:1.7; font-size:0.95rem; max-width:520px; }
-
-  /* ============ ABOUT / STORY ============ */
-  .about-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:start; }
+  /* ============ ABOUT DIVISION ============ */
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
   @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:44px; } }
-  .about-frame{
-    aspect-ratio:4/5;
-    border:1px solid var(--line);
-    background:
-      repeating-linear-gradient(135deg, rgba(214,165,68,0.06) 0 2px, transparent 2px 14px),
-      var(--bg-alt-2);
-    display:flex; align-items:center; justify-content:center;
-    position:relative;
-    border-radius:4px;
-  }
-  .about-frame span{
-    font-family:'Special Elite', monospace; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase;
-    color:var(--cream-dim); text-align:center; padding:0 20px;
-  }
-  .about-frame .corner{ position:absolute; width:16px; height:16px; border:1px solid var(--gold-soft); opacity:0.6; }
-  .about-frame .corner.tl{ top:14px; left:14px; border-right:none; border-bottom:none; }
-  .about-frame .corner.br{ bottom:14px; right:14px; border-left:none; border-top:none; }
-  .about-copy p{ color:var(--cream-dim); line-height:1.85; font-size:1rem; margin-bottom:22px; }
+  .about-copy p{ color:var(--ink-soft); line-height:1.8; font-size:1.02rem; margin-bottom:22px; }
   .about-copy p:last-child{ margin-bottom:0; }
-
-  /* Mission callout */
-  .mission-box{
-    margin-top:50px; padding:36px 40px; border-left:3px solid var(--maroon);
-    background:rgba(166,65,74,0.06);
+  .tech-illustration {
+    border: 1px solid var(--line-dark);
+    padding: 30px;
+    background: rgba(32,21,14,0.02);
+    border-radius: 4px;
+    position: relative;
   }
-  .mission-box p{ font-family:'Fraunces', serif; font-style:italic; font-size:1.2rem; line-height:1.6; color:var(--cream-text); }
+  .tech-illustration::before {
+    content: ''; position: absolute; inset: 10px; border: 1px dashed rgba(32,21,14,0.08); border-radius: 2px; pointer-events: none;
+  }
 
-  .values-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; margin-top:56px; }
-  @media (max-width:900px){ .values-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:520px){ .values-grid{ grid-template-columns:1fr; } }
-  .value-card{ padding:30px 26px; border:1px solid var(--line); border-radius:8px; transition: transform 0.4s var(--ease), background 0.4s var(--ease), box-shadow 0.4s; }
-  .value-card:hover { transform: translateY(-5px); background: rgba(214,165,68,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-color: rgba(214,165,68,0.3); }
-  .value-card .vnum{ font-family:'Special Elite', monospace; font-size:0.8rem; color:var(--gold-soft); margin-bottom: 8px; display: block; }
-  .value-card h4{ font-size:1.15rem; color:var(--cream-text); margin:12px 0 12px; }
-  .value-card p{ font-size:0.9rem; color:var(--cream-dim); line-height:1.7; margin:0; }
+  /* ============ INFRASTRUCTURE GRID ============ */
+  .infra-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:30px; }
+  @media (max-width:760px){ .infra-grid{ grid-template-columns:1fr; } }
+  .infra-card{
+    display:flex;
+    gap:20px;
+    padding:30px;
+    border-radius:4px;
+    background:rgba(255,255,255,0.01);
+    border:1px solid rgba(255,255,255,0.04);
+    transition:background 0.3s, border-color 0.3s;
+  }
+  .infra-card:hover {
+    background:rgba(255,255,255,0.03);
+    border-color:rgba(214,165,68,0.2);
+  }
+  .infra-card svg{
+    width:36px; height:36px; flex-shrink:0; color:var(--gold-soft);
+  }
+  .infra-card h4{
+    font-size:1.15rem; color:var(--cream-text); margin-bottom:8px;
+  }
+  .infra-card p{
+    font-size:0.88rem; line-height:1.65; color:var(--cream-dim);
+  }
 
-  /* ============ LEADERSHIP ============ */
-  .team-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; }
-  @media (max-width:900px){ .team-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:560px){ .team-grid{ grid-template-columns:1fr; } }
-  .team-card{ text-align:left; }
-  .team-card h4{ font-size:1.15rem; color:var(--ink); margin-bottom: 4px; }
-  .team-card .role{ font-family:'Inter', sans-serif; font-weight:700; font-size:0.9rem; letter-spacing:0.06em; text-transform:uppercase; color:#0c2b5e; margin:6px 0 12px; display:inline-block; }
-  .team-card p{ font-size:0.86rem; line-height:1.6; color:var(--ink-soft); }
+  /* ============ PROJECTS GRID ============ */
+  .projects-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) {
+    .projects-list-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .projects-list-grid { grid-template-columns: 1fr; }
+  }
+  .project-item {
+    background: var(--bg-alt);
+    border-left: 2px solid var(--gold);
+    padding: 20px 24px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: transform 0.3s var(--ease), background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .project-item:hover {
+    transform: translateX(6px);
+    background: var(--bg-alt-2);
+  }
+  .project-item span {
+    color: var(--cream-text);
+  }
+  .project-item .check {
+    color: var(--gold-soft);
+    font-size: 0.8rem;
+    font-family: 'Special Elite', monospace;
+  }
 
-  /* ============ CTA BAND ============ */
-  #cta-band{
+  /* ============ COMMITMENT ============ */
+  #commitment{
     padding:110px 0;
     text-align:center;
     background: linear-gradient(180deg, var(--bg-alt), var(--bg));
     position:relative;
     border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .commitment-box{
+    max-width:800px;
+    margin:0 auto;
+    padding:40px;
+    border:1px dashed var(--line);
+    background:rgba(255,255,255,0.01);
+  }
+  .commitment-quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.5;
+    color:var(--gold-soft);
+    margin-bottom:24px;
+  }
+  .commitment-desc{
+    font-size:1.02rem;
+    line-height:1.8;
+    color:var(--cream-dim);
+  }
+
+  /* ============ CTA BAND ============ */
+  #cta-band{
+    padding:110px 0;
+    text-align:center;
+    background: var(--bg-alt);
   }
   #cta-band h2{ font-size:clamp(1.8rem,3.6vw,2.7rem); max-width:700px; margin:0 auto; color:var(--cream-text); }
-  #cta-band p{ margin:22px auto 0; max-width:520px; color:var(--cream-dim); line-height:1.7; }
+  #cta-band p{ margin:22px auto 0; max-width:560px; color:var(--cream-dim); line-height:1.75; }
   #cta-band .btn{ margin-top:38px; }
 
   /* ============ CONTACT ============ */
-  .contact-grid{ display:grid; grid-template-columns:240px 1fr; gap:60px; align-items: center; }
-  @media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; } }
-  .contact-item{ display:flex; gap:18px; padding:22px 0; border-bottom:1px solid var(--line-dark); }
-  .contact-item .ic{ width:22px; height:22px; flex-shrink:0; color:var(--maroon); margin-top:2px; }
-  .contact-item .lbl{ font-family:'Special Elite', monospace; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px; }
-  .contact-item .val{ font-size:1rem; color:var(--ink); }
+  .contact-grid{ display:grid; grid-template-columns:1fr; gap:40px; text-align: center; }
+  .contact-details {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .contact-details { flex-direction: column; gap: 24px; align-items: center; }
+  }
+  .contact-item{ display:flex; gap:18px; padding:22px 0; align-items: center; }
+  .contact-item .ic{ width:22px; height:22px; flex-shrink:0; color:var(--maroon); }
+  .contact-item .lbl{ font-family:'Special Elite', monospace; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px; text-align: left; }
+  .contact-item .val{ font-size:1.05rem; color:var(--ink); font-weight: 500; text-align: left; }
 
   /* ============ FOOTER ============ */
-  footer{ background:#1a120c; padding:70px 0 30px; }
+  footer{ background:#0e111d; padding:70px 0 30px; }
   .footer-grid{ display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:50px; }
   @media (max-width:760px){ .footer-grid{ grid-template-columns:1fr; gap:36px; } }
   footer h5{ font-family:'Special Elite', monospace; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream-dim); margin-bottom:20px; }
@@ -745,7 +755,6 @@
   .footer-credit p{ font-size:0.74rem; color:var(--cream-dim); opacity:0.5; letter-spacing:0.01em; }
   .footer-credit a{ color:var(--cream-dim); opacity:1; text-decoration:none; transition:color 0.3s; }
   .footer-credit a:hover{ color:var(--gold-soft); }
-
 
   @media (prefers-reduced-motion: reduce){
     *{ animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
@@ -780,19 +789,19 @@
       <span class="letter" style="--i:18">S</span>
     </div>
     <div class="brand-private">PRIVATE LIMITED</div>
-    <div class="brand-tag">Your Partner for Sustainable Growth</div>
+    <div class="brand-tag">IT &amp; ITES Services</div>
   </div>
-  <div class="preload-label" style="margin-top: 20px;">Preparing shipment<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
+  <div class="preload-label" style="margin-top: 20px;">Deploying Operations<span class="dots"><span>.</span><span>.</span><span>.</span></span></div>
 </div>
 
 <div id="progress-bar"></div>
 
 <nav id="side-nav">
   <button data-target="home" data-label="Home" class="active"></button>
-  <button data-target="export" data-label="Export"></button>
-  <button data-target="why" data-label="Why Us"></button>
-  <button data-target="story" data-label="Story"></button>
-  <button data-target="leadership" data-label="Team"></button>
+  <button data-target="about" data-label="About"></button>
+  <button data-target="services" data-label="Services"></button>
+  <button data-target="infrastructure" data-label="Operations"></button>
+  <button data-target="projects" data-label="Sectors"></button>
   <button data-target="contact" data-label="Contact"></button>
 </nav>
 
@@ -812,9 +821,8 @@
 </button>
 
 <header id="site-header">
-
   <div class="wrap" style="position: relative; z-index: 2;">
-    <a href="#home" class="logo-mark" data-scroll="home">
+    <a href="index.html#home" class="logo-mark">
       <img src="logo.png" alt="S&amp;G Logo" class="header-logo">
       <div class="brand-text-block header-brand">
         <div class="brand-main">
@@ -844,15 +852,15 @@
       </div>
     </a>
     <nav class="main-nav">
-      <a href="#home" data-scroll="home" class="active">Home</a>
-      <a href="#export" data-scroll="export">Export</a>
-      <a href="#why" data-scroll="why">Why Us</a>
-      <a href="#story" data-scroll="story">About</a>
-      <a href="#leadership" data-scroll="leadership">Team</a>
-      <div class="nav-dropdown">
+      <a href="index.html#home">Home</a>
+      <a href="index.html#export">Export</a>
+      <a href="index.html#why">Why Us</a>
+      <a href="index.html#story">About</a>
+      <a href="index.html#leadership">Team</a>
+      <div class="nav-dropdown open">
         <a href="#" class="dropdown-trigger" onclick="return false;">Other Services <span class="arrow">▾</span></a>
         <div class="dropdown-content">
-          <a href="it-ites-services.html">IT and ITES Service</a>
+          <a href="it-ites-services.html" style="color: var(--gold) !important; background: rgba(255,255,255,0.03);">IT and ITES Service</a>
           <a href="civil-construction.html">Civil Construction &amp; Infrastructure</a>
         </div>
       </div>
@@ -866,181 +874,211 @@
 <!-- ================= HERO ================= -->
 <section id="home">
   <div class="hero-slider">
-    <div class="hero-slide" style="background-image: url('bg_hero_1.png');"></div>
-    <div class="hero-slide" style="background-image: url('bg_hero_2.png');"></div>
-    <div class="hero-slide" style="background-image: url('bg_hero_3.png');"></div>
-    <div class="hero-slide" style="background-image: url('bg_hero_4.png');"></div>
-    <div class="hero-slide" style="background-image: url('bg_hero_5.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_it_hero.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_it_servers.png');"></div>
+    <div class="hero-slide" style="background-image: url('bg_it_workplace.png');"></div>
   </div>
   <div class="wrap hero-grid">
     <div>
-      <div class="hero-eyebrow eyebrow reveal">Agri products import &amp; export</div>
-      <h1 class="hero-title reveal reveal-delay-1">Premium Indian Agri Produce, <em>Delivered to the World.</em></h1>
-      <p class="hero-sub reveal reveal-delay-2">S&amp;G Global Solutions Pvt. Ltd. connects India's finest pomegranates, grapes, raisins, and agricultural commodities with buyers across the globe — straight from the finest farms across South India.</p>
+      <div class="hero-eyebrow eyebrow reveal">IT &amp; ITES Solutions</div>
+      <h1 class="hero-title reveal reveal-delay-1">Innovating Modern Business <em>with Advanced Technology.</em></h1>
+      <p class="hero-sub reveal reveal-delay-2">S&amp;G Global Solutions delivers enterprise-grade IT services, technical consulting, and IT Enabled Services (ITES) that drive digital transformation and global growth. We combine technical expertise, process optimization, and scalable solutions to power modern businesses.</p>
       <div class="hero-ctas reveal reveal-delay-3">
-        <a href="#contact" data-scroll="contact" class="btn btn-primary">Get a Quote</a>
-        <a href="#export" data-scroll="export" class="btn btn-ghost">Our Products</a>
+        <a href="#contact" class="btn btn-primary" data-scroll="contact">Start Your Project</a>
+        <a href="#services" class="btn btn-ghost" data-scroll="services">Explore Services</a>
       </div>
     </div>
-    <div class="hero-visual reveal reveal-delay-2">
-      <div class="stamp">Export<br>Quality<br>Assured</div>
+    <div class="reveal reveal-delay-2" style="position: relative;">
+      <div class="hero-badge">
+        <h4>Security &amp; Scalability</h4>
+        <p>Executed with absolute data protection, high uptime, and agile development pipelines.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ================= STATS ================= -->
-<section id="stats">
-  <div class="wrap stats-grid">
-    <div class="stat-card reveal"><div class="stat-badge">100%</div><div class="stat-label">Quality Assured</div></div>
-    <div class="stat-card reveal reveal-delay-1"><div class="stat-badge">GL</div><div class="stat-label">Export Reach</div></div>
-    <div class="stat-card reveal reveal-delay-2"><div class="stat-badge">SGL</div><div class="stat-label">Sangli, Maharashtra</div></div>
-    <div class="stat-card reveal reveal-delay-3"><div class="stat-badge">→</div><div class="stat-label">Farm to Port to World</div></div>
-  </div>
-</section>
-
-<!-- ================= WHAT WE EXPORT ================= -->
-<section id="export" class="section">
+<!-- ================= ABOUT DIVISION (light) ================= -->
+<section id="about" class="section light">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">What We Export</div>
-      <h2 class="section-title">Premium agricultural commodities, sourced from across South India.</h2>
-      <p class="section-sub">Every shipment begins in the farming belts across South India — and ends on a table somewhere in the world.</p>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="export-grid reveal">
-      <div class="export-card">
-        <img class="bg" src="bg_pomegranates.png" alt="" loading="lazy" />
-        <span class="num">01</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 8c-2 3-2 5 0 7"/><circle cx="24" cy="26" r="16"/><path d="M15 20c3-2 6-2 9 0M24 20c3-2 6-2 9 0" /><path d="M12 30c4 6 10 9 12 9s8-3 12-9"/></svg>
-        <h3>Pomegranates</h3>
-        <p>Sangli is one of India's top pomegranate-growing regions. We export fresh, graded pomegranates that meet international phytosanitary standards.</p>
-      </div>
-      <div class="export-card">
-        <img class="bg" src="bg_grapes.png" alt="" loading="lazy" />
-        <span class="num">02</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 6v6"/><circle cx="18" cy="18" r="4.2"/><circle cx="30" cy="18" r="4.2"/><circle cx="14" cy="28" r="4.2"/><circle cx="24" cy="28" r="4.2"/><circle cx="34" cy="28" r="4.2"/><circle cx="19" cy="38" r="4.2"/><circle cx="29" cy="38" r="4.2"/></svg>
-        <h3>Grapes</h3>
-        <p>Fresh table grapes sourced directly from vineyards in and around Sangli, carefully packed for long-haul export.</p>
-      </div>
-      <div class="export-card">
-        <img class="bg" src="bg_raisins.png" alt="" loading="lazy" />
-        <span class="num">03</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="14" cy="14" r="5" stroke-dasharray="2 2"/><path d="M14 19 A14 14 0 0 0 24 40"/><ellipse cx="26" cy="30" rx="5" ry="4"/><ellipse cx="34" cy="24" rx="5" ry="4"/><ellipse cx="36" cy="34" rx="5" ry="4"/></svg>
-        <h3>Raisins</h3>
-        <p>Sun-dried and processed raisins from Maharashtra's grape belt — a premium product in high demand across global markets.</p>
-      </div>
-      <div class="export-card">
-        <img class="bg" src="bg_vegetables.png" alt="" loading="lazy" />
-        <span class="num">04</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 40h28l-3-16H13z"/><path d="M13 24h22"/><path d="M18 24c0-8 2-14 6-16 4 2 6 8 6 16"/></svg>
-        <h3>Fresh Fruits &amp; Vegetables</h3>
-        <p>Seasonal produce sourced through direct farm and APMC networks, graded and packed to maintain freshness in transit.</p>
-      </div>
-      <div class="export-card">
-        <img class="bg" src="bg_grains.png" alt="" loading="lazy" />
-        <span class="num">05</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M24 8v30"/><path d="M24 12c-3 0-5 2-5 5s2 3 5 3 5 0 5-3-2-5-5-5z"/><path d="M24 20c-3 0-5 2-5 5s2 3 5 3 5 0 5-3-2-5-5-5z"/><path d="M18 42h12"/></svg>
-        <h3>Grains &amp; Pulses</h3>
-        <p>Rice, wheat, lentils, chickpeas, and other staple commodities sourced from trusted Indian farms for export.</p>
-      </div>
-      <div class="export-card">
-        <img class="bg" src="bg_spices.png" alt="" loading="lazy" />
-        <span class="num">06</span>
-        <svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="15" y="18" width="18" height="22" rx="2"/><path d="M19 18v-4c0-2 2-4 5-4s5 2 5 4v4"/><path d="M15 26h18"/></svg>
-        <h3>Spices &amp; Condiments</h3>
-        <p>Authentic Indian spices — turmeric, cumin, coriander, chilli, and more — meeting international food safety standards.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WHY PARTNER (light/paper section) ================= -->
-<section id="why" class="section light">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Why Partner With Us</div>
-      <h2 class="section-title">Rooted in South India's farming heartland, built for global trade.</h2>
-    </div>
-    <div class="why-list">
-      <div class="why-item reveal">
-        <h3>Direct Farm &amp; APMC Sourcing</h3>
-        <p>We work directly with farmers and APMC networks to source produce at peak quality, ensuring traceability and fair pricing.</p>
-      </div>
-      <div class="why-item reveal reveal-delay-1">
-        <h3>Strict Grading &amp; Packaging</h3>
-        <p>Every shipment is graded, tested, and packed to meet APEDA, FSSAI, and destination-country import standards.</p>
-      </div>
-      <div class="why-item reveal reveal-delay-2">
-        <h3>End-to-End Logistics</h3>
-        <p>We manage the full supply chain — from farm gate to port to final destination — so you receive consistent quality, shipment after shipment.</p>
-      </div>
-      <div class="why-item reveal reveal-delay-3">
-        <h3>Transparent &amp; Reliable</h3>
-        <p>Clear documentation, honest pricing, and timely communication. No surprises from inquiry to delivery.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= STORY / ABOUT ================= -->
-<section id="story" class="section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div class="eyebrow">Who We Are</div>
-      <h2 class="section-title">Our Story</h2>
+      <div class="eyebrow">About Our IT Division</div>
+      <h2 class="section-title">A trusted partner for digital systems and operations.</h2>
     </div>
     <div class="about-grid">
-      <div class="about-frame reveal" style="background: none; border: none; padding: 0; display: block; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px;">
-        <img src="about_warehouse.png" alt="Warehouse Facility" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+      <div class="about-copy reveal">
+        <p>We partner with global enterprises, start-ups, and public sector organizations to build robust software systems and run seamless back-office operations. Our commitment to security, data integrity, and operational excellence makes us a trusted technology partner.</p>
+        <p>By integrating modern cloud infrastructure, agile project delivery, and 24/7 business process support, S&amp;G Global Solutions ensures your digital products and business workflows remain efficient, safe, and highly scalable.</p>
       </div>
-      <div class="about-copy reveal reveal-delay-1">
-        <p>S&amp;G Global Solutions Pvt. Ltd. was founded with a clear vision: to connect India's finest agricultural produce with international markets. We strategically source from across the rich agricultural landscapes of South India, delivering the finest pomegranates, grapes, and raisins from our headquarters in Sangli, Maharashtra.</p>
-        <p>We bring together deep local farming relationships, export expertise, and a commitment to quality at every stage of the supply chain. By working directly with farmers and APMC networks, we source produce at peak quality and manage everything from grading and packaging to end-to-end logistics.</p>
-        <p>Our goal is simple — to be a trusted bridge between India's agricultural heartland and global markets, delivering premium produce with consistency, integrity, and care.</p>
-        <div class="mission-box">
-          <p>"To be a trusted bridge between India's agricultural heartland and global markets — delivering premium pomegranates, raisins, grapes, and all agricultural products with consistency, integrity, and care."</p>
+      <div class="tech-illustration reveal reveal-delay-1">
+        <div style="font-family: 'Special Elite', monospace; font-size: 0.8rem; color: var(--ink-soft); line-height: 2;">
+          [DIGITAL NODE SYSTEMS]<br>
+          LOC: CLOUD DEPLOYMENT NETWORK<br>
+          SPEC: OWASP, SOC2, GDPR SECURE<br>
+          STATUS: ONLINE &amp; MONITORING<br>
+          LATENCY: 12ms TO REGION-WEST
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="values-grid">
-      <div class="value-card reveal"><div class="vnum">01</div><h4>Quality First</h4><p>Every product is graded, tested, and packed to meet APEDA, FSSAI, and international food safety standards.</p></div>
-      <div class="value-card reveal reveal-delay-1"><div class="vnum">02</div><h4>Farmer Focused</h4><p>We source directly from farmers and APMC networks, ensuring fair value for producers and traceability for buyers.</p></div>
-      <div class="value-card reveal reveal-delay-2"><div class="vnum">03</div><h4>Reliability</h4><p>We honour commitments on quantity, quality, and delivery timelines — every single shipment.</p></div>
-      <div class="value-card reveal reveal-delay-3"><div class="vnum">04</div><h4>Integrity</h4><p>Transparent pricing, honest communication, and clear documentation at every step of the trade process.</p></div>
+<!-- ================= SERVICES (dark/alt) ================= -->
+<section id="services" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our IT &amp; ITES Services</div>
+      <h2 class="section-title">Comprehensive technology solutions from code to operation.</h2>
+      <p class="section-sub">We build and scale software while managing back-office workloads so you can focus on core growth.</p>
+    </div>
+    <div class="services-grid reveal">
+      
+      <div class="service-card">
+        <span class="num">01</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <h3>Custom Software Development</h3>
+        <p>End-to-end design, development, and testing of custom enterprise applications, mobile apps, and scalable web platforms.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="num">02</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a6 6 0 0 0 0-12z"/></svg>
+        <h3>Cloud Engineering &amp; DevOps</h3>
+        <p>Cloud migration, infrastructure management, DevOps pipeline automation, and multi-cloud environment optimization.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="num">03</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h3>Cyber Security &amp; Compliance</h3>
+        <p>Vulnerability assessments, threat monitoring, secure code audits, and compliance mapping (ISO 27001, GDPR).</p>
+      </div>
+
+      <div class="service-card">
+        <span class="num">04</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <h3>IT Enabled Services (ITES)</h3>
+        <p>High-quality back-office processing, customer support operations, data transcription, and business process management (BPM).</p>
+      </div>
+
+      <div class="service-card">
+        <span class="num">05</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <h3>Data Analytics &amp; BI</h3>
+        <p>Data pipeline architectures, warehouse setups, business intelligence dashboarding, and predictive analytics models.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="num">06</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <h3>System Integration</h3>
+        <p>Connecting legacy architectures with modern cloud APIs, microservices, and databases for seamless workflow automation.</p>
+      </div>
+
+      <div class="service-card" style="grid-column: span 1;">
+        <span class="num">07</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <h3>IT Consulting &amp; Strategy</h3>
+        <p>Long-term digital transformation roadmap planning, technology stack audit, and IT infrastructure advisory services.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ================= LEADERSHIP (light/paper section) ================= -->
-<section id="leadership" class="section light">
+<!-- ================= OPERATIONS & INFRASTRUCTURE (dark) ================= -->
+<section id="infrastructure" class="section">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="eyebrow">Our Leadership</div>
-      <h2 class="section-title">Guided by hands-on expertise and a passion for Indian agriculture.</h2>
+      <div class="eyebrow">Operations &amp; Security</div>
+      <h2 class="section-title">S&amp;G's global standards for secure and redundant IT delivery.</h2>
+      <p class="section-sub">Developing robust tech frameworks, keeping customer and operations data safe.</p>
     </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <h4>Mr. Prakash Katte</h4>
-        <div class="role">Founder and Director</div>
-        <p>Leads S&amp;G Global Solutions with a vision to make Indian agri produce a trusted name in global markets, driving growth across domestic and export markets.</p>
+    <div class="infra-grid reveal">
+      <div class="infra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        <div>
+          <h4>Secure Data Centers</h4>
+          <p>Tier-III data infrastructure ensuring 99.9% uptime and geographic redundancy.</p>
+        </div>
       </div>
-      <div class="team-card reveal reveal-delay-1">
-        <h4>Operations Team</h4>
-        <div class="role">Logistics &amp; Compliance</div>
-        <p>Handles end-to-end shipment coordination, customs documentation, and regulatory compliance for smooth cross-border trade.</p>
+      <div class="infra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <div>
+          <h4>Agile Methodologies</h4>
+          <p>Rapid feature deployments, daily standups, and transparent project tracking.</p>
+        </div>
       </div>
-      <div class="team-card reveal reveal-delay-2">
-        <h4>Sourcing Team</h4>
-        <div class="role">Farm Relations &amp; QC</div>
-        <p>Builds and maintains relationships with farmers and APMC networks across South India, overseeing grading and quality control.</p>
+      <div class="infra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6.2 6.2l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+        <div>
+          <h4>24/7 Operations Support</h4>
+          <p>Around-the-clock network operations center (NOC) and helpdesk support.</p>
+        </div>
       </div>
-      <div class="team-card reveal reveal-delay-3">
-        <h4>Trade Team</h4>
-        <div class="role">Global Buyer Relations</div>
-        <p>Identifies and nurtures relationships with international importers and wholesale buyers, built on long-term trust.</p>
+      <div class="infra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <h4>Regulatory Compliance</h4>
+          <p>Complete compliance with global data privacy frameworks (HIPAA, GDPR, CCPA).</p>
+        </div>
       </div>
+      <div class="infra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M15 3v18"/><path d="M3 9h18"/><path d="M3 15h18"/></svg>
+        <div>
+          <h4>Advanced Development Tools</h4>
+          <p>Standardized CI/CD pipelines, secure containerization, and modern software development kits.</p>
+        </div>
+      </div>
+      <div class="infra-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <div>
+          <h4>Talent Acquisition</h4>
+          <p>Rigorous sourcing and onboarding of high-caliber engineers and process specialists.</p>
+        </div>
+      </div>
+      <div class="infra-card" style="grid-column: span 1;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <div>
+          <h4>Green IT Initiatives</h4>
+          <p>Eco-friendly server clustering, virtualization efficiency, and minimized server electricity footprints.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTORS WE SERVE (dark/alt) ================= -->
+<section id="projects" class="section section-alt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Sectors We Serve</div>
+      <h2 class="section-title">Industry-specific software and back-office solutions.</h2>
+      <p class="section-sub">We deploy dedicated development squads and operational teams across various industries.</p>
+    </div>
+    
+    <div class="projects-list-grid reveal">
+      <div class="project-item"><span>Agriculture &amp; Supply Chain Tech</span><span class="check">✓</span></div>
+      <div class="project-item"><span>E-Commerce &amp; Retail</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Banking &amp; Financial Services</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Healthcare &amp; Telemedicine</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Logistics &amp; Fleet Management</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Real Estate &amp; PropTech</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Manufacturing &amp; Industry 4.0</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Educational Technology (EdTech)</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Hospitality &amp; Travel Systems</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Media &amp; Digital Content Delivery</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Government &amp; Civic Tech</span><span class="check">✓</span></div>
+      <div class="project-item"><span>Energy &amp; Utility Management</span><span class="check">✓</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR COMMITMENT ================= -->
+<section id="commitment">
+  <div class="wrap">
+    <div class="commitment-box reveal">
+      <div class="commitment-quote">"Every line of code we write and every process we run is a commitment to reliability, security, and client growth."</div>
+      <p class="commitment-desc">At S&amp;G Global Solutions, we believe technology is not just a tool — it's the engine of modern business growth. Our mission is to deliver IT and ITES projects that exceed expectations, optimize operations, and foster sustainable digital transformation. Whether you need a custom enterprise application, a cloud migration, or a dedicated back-office operation, we are your trusted technology partner.</p>
     </div>
   </div>
 </section>
@@ -1048,26 +1086,23 @@
 <!-- ================= CTA BAND ================= -->
 <section id="cta-band">
   <div class="wrap">
-    <div class="eyebrow reveal" style="justify-content:center;color:var(--gold-soft)">Start a Partnership</div>
-    <h2 class="reveal reveal-delay-1" style="margin-top:18px;">Looking to Source Premium Indian Agri Products?</h2>
-    <p class="reveal reveal-delay-2">Reach out to S&amp;G Global Solutions and let's build a trade partnership that works for both sides.</p>
-    <a href="#contact" data-scroll="contact" class="btn btn-primary reveal reveal-delay-3">Contact Us Today</a>
+    <div class="eyebrow reveal" style="justify-content:center;color:var(--gold-soft)">Digital Innovation</div>
+    <h2 class="reveal reveal-delay-1" style="margin-top:18px;">Let's Build Something Extraordinary Together</h2>
+    <p class="reveal reveal-delay-2">Partner with S&amp;G Global Solutions for IT and ITES services that combine innovation, reliability, and excellence. From concept to completion, we are committed to bringing your vision to life.</p>
+    <a href="#contact" class="btn btn-primary reveal reveal-delay-3" data-scroll="contact">Contact Us Today</a>
   </div>
 </section>
 
-<!-- ================= CONTACT (light/paper) ================= -->
+<!-- ================= CONTACT (light) ================= -->
 <section id="contact" class="section light">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Get In Touch</div>
-      <h2 class="section-title">Let's talk trade.</h2>
-      <p class="section-sub">Whether you're sourcing pomegranates, raisins, grapes or staple commodities — our team responds directly.</p>
+      <h2 class="section-title">Discuss your tech requirements with our experts.</h2>
+      <p class="section-sub">Contact us today to review your project blueprints, timelines, and receive a free comprehensive consultation.</p>
     </div>
     <div class="contact-grid reveal">
-      <div class="about-frame" style="background: none; border: none; padding: 0; display: block; aspect-ratio: 1/1; overflow: hidden; border-radius: 8px; width: 100%; max-width: 240px; margin: 0;">
-        <img src="office_reception.png" alt="S&amp;G Global Solutions Office" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
-      </div>
-      <div>
+      <div class="contact-details">
         <div class="contact-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1"/></svg>
           <div><div class="lbl">Email</div><div class="val">contact@sgglobalsolution.com</div></div>
@@ -1090,14 +1125,14 @@
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-top:2px;flex-shrink:0;"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           <span style="border-bottom: 1px dashed rgba(239,228,205,0.3);">Jath, Sangli, Maharashtra, India - 416404</span>
         </a>
-        <p class="desc">Connecting India's finest agricultural produce — pomegranates, grapes, raisins, and more — with buyers across the globe.</p>
+        <p class="desc">Delivering custom software engineering, DevOps pipelines, secure data networks, and transactional business support operations globally.</p>
       </div>
       <div>
         <h5>Quick Links</h5>
         <div class="flinks">
-          <a href="#home" data-scroll="home">Home</a>
-          <a href="#story" data-scroll="story">About Us</a>
-          <a href="#contact" data-scroll="contact">Contact</a>
+          <a href="index.html#home">Home</a>
+          <a href="index.html#story">About Us</a>
+          <a href="index.html#contact">Contact</a>
         </div>
       </div>
       <div>
@@ -1111,7 +1146,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6.2 6.2l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
             +91 93565 96153
           </a>
-
         </div>
       </div>
     </div>
@@ -1138,7 +1172,7 @@ window.addEventListener('load', () => {
     preloader.classList.add('hide');
     document.body.style.overflow = '';
     initRevealCheck();
-  }, 3900);
+  }, 1800);
 });
 document.body.style.overflow = 'hidden';
 
@@ -1149,7 +1183,7 @@ const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').mat
 let currentY = window.scrollY;
 let targetY = window.scrollY;
 let ticking = false;
-const damping = 0.085; /* lower = slower / heavier */
+const damping = 0.085;
 
 function getMaxScroll(){ return document.documentElement.scrollHeight - window.innerHeight; }
 
@@ -1181,7 +1215,6 @@ if (!prefersReduced && !('ontouchstart' in window)) {
     targetY = Math.min(targetY, getMaxScroll());
   });
 } else {
-  /* touch / reduced motion: keep native scroll, just sync currentY/targetY */
   window.addEventListener('scroll', () => {
     currentY = window.scrollY;
     targetY = window.scrollY;
@@ -1248,10 +1281,9 @@ updateChrome();
 
 backToTop.addEventListener('click', () => animateScrollTo(0, 1500));
 
-/* ---------- Section active state (side nav + top nav) ---------- */
-const sections = ['home','export','why','story','leadership','contact'];
+/* ---------- Section active state (side nav) ---------- */
+const sections = ['home','about','services','infrastructure','projects','contact'];
 const sideBtns = document.querySelectorAll('#side-nav button');
-const navLinks = document.querySelectorAll('nav.main-nav a[data-scroll]');
 
 sideBtns.forEach(btn => btn.addEventListener('click', () => {
   const id = btn.getAttribute('data-target');
@@ -1263,7 +1295,6 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting){
       const id = entry.target.id;
       sideBtns.forEach(b => b.classList.toggle('active', b.dataset.target === id));
-      navLinks.forEach(a => a.classList.toggle('active', a.dataset.scroll === id));
     }
   });
 }, { threshold:0.4, rootMargin:'-10% 0px -10% 0px' });
@@ -1281,7 +1312,7 @@ function initRevealCheck(){
       }
     });
   }, { threshold:0.15 });
-  document.querySelectorAll('.reveal, .route').forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 }
 
 /* ---------- Mobile menu ---------- */
