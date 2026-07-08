@@ -576,8 +576,8 @@
 
   /* ============ STATS ============ */
   #stats{ padding:70px 0; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .stats-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
-  @media (max-width:760px){ .stats-grid{ grid-template-columns:repeat(2,1fr); } }
+  .stats-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:760px){ .stats-grid{ grid-template-columns:1fr; } }
   .stat-card{ text-align:center; padding:30px 10px; border-radius: 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); transition: transform 0.4s var(--ease), background 0.4s var(--ease); }
   .stat-card:hover{ transform: translateY(-5px); background: rgba(255,255,255,0.05); border-color: var(--gold-soft); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
   .stat-badge{
@@ -892,9 +892,8 @@
 <section id="stats">
   <div class="wrap stats-grid">
     <div class="stat-card reveal"><div class="stat-badge">100%</div><div class="stat-label">Quality Assured</div></div>
-    <div class="stat-card reveal reveal-delay-1"><div class="stat-badge">GL</div><div class="stat-label">Export Reach</div></div>
-    <div class="stat-card reveal reveal-delay-2"><div class="stat-badge">SGL</div><div class="stat-label">Sangli, Maharashtra</div></div>
-    <div class="stat-card reveal reveal-delay-3"><div class="stat-badge">→</div><div class="stat-label">Farm to Port to World</div></div>
+    <div class="stat-card reveal reveal-delay-1"><div class="stat-badge">Global</div><div class="stat-label">Export Reach</div></div>
+    <div class="stat-card reveal reveal-delay-2"><div class="stat-badge">→</div><div class="stat-label">Farm to Port to World</div></div>
   </div>
 </section>
 
@@ -1068,6 +1067,13 @@
         <img src="office_reception.png" alt="S&amp;G Global Solutions Office" style="width: 100%; height: 100%; object-fit: contain; display: block;" />
       </div>
       <div>
+        <div style="margin-bottom: 28px; display: flex; align-items: center; gap: 16px; text-align: left;">
+          <img src="logo.png" alt="S&amp;G Logo" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.05);">
+          <div>
+            <div style="font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); line-height: 1.25;">S&amp;G Global Solutions Private Limited</div>
+            <div style="font-size: 0.72rem; font-family: 'Special Elite', monospace; letter-spacing: 0.05em; color: var(--ink-soft); text-transform: uppercase; margin-top: 4px;">Your Partner for Sustainable Growth</div>
+          </div>
+        </div>
         <div class="contact-item">
           <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z" opacity="0"/><path d="M3 6l9 7 9-7"/><rect x="3" y="5" width="18" height="14" rx="1"/></svg>
           <div><div class="lbl">Email</div><div class="val">contact@sgglobalsolution.com</div></div>
